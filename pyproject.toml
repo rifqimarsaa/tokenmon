@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tokenmon-internal"
+dynamic = ["version"]
+description = "Private CLI usage monitor for Claude Code and Codex subscriptions"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Proprietary"}
+authors = [{name = "Internal"}]
+dependencies = []
+
+[project.optional-dependencies]
+gui = ["pystray", "Pillow"]
+
+[project.scripts]
+tokenmon = "tokenmon.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "tokenmon.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
